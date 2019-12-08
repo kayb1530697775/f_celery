@@ -1,0 +1,4 @@
+*.pyc
+.ida
+__pycache__
+

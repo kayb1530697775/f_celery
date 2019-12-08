@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kayb Index</title>
+</head>
+<body>
+<p>welcome kayb index ...</p>
+enter info: <input type="text" id="enter_info">
+<br>
+submit    : <input type="submit" value="submit" onclick="wb_submit()">
+</body>
+
+<script type="application/javascript">
+    ws = new WebSocket("ws://0.0.0.0:5000/connect_wb/")
+
+    ws.onopen = function(evt){
+      console.log('connect success');
+    };
+
+    ws.onerror = function(evt){
+      console.log('connect error')
+    };
+
+    ws.onmessage = function(evt){
+      console.info(evt.data)
+    };
+    console.log(ws);
+
+    function wb_submit() {
+        var enter_info = document.getElementById('enter_info').value
+        console.log(enter_info)
+        ws.send(enter_info)
+    }
+
+</script>
+
+</html>
